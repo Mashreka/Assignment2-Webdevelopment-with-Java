@@ -24,9 +24,8 @@ public class AllStudentsServlet extends HttpServlet {
             PrintWriter out = response.getWriter();
             out.println("<html><head><title>Error</title><link rel='stylesheet' type='text/css' href='/css/styles.css'></head><body>");
 
-            out.println("<h1>Failed to retrieve students data</h1>");
-            out.println("<h2>Error: " + e.getMessage() + "</h2>");
-
+            out.println("<h2 class='error-header'>Failed to retrieve students data</h2>");
+            out.println("<p class='error-header'>Error: " + e.getMessage() + "</p>");
             // Back to allStudents
             out.println("<div style='text-align:center;'>");
             out.println("<button class='btn btn-secondary' onclick=\"window.location.href='/allStudents';\">Back</button>"); // Back button
@@ -50,9 +49,8 @@ public class AllStudentsServlet extends HttpServlet {
             } catch (NumberFormatException e) {
                 PrintWriter out = response.getWriter();
                 out.println("<html><head><title>Error</title><link rel='stylesheet' type='text/css' href='/css/styles.css'></head><body>");
-                out.println("<h1>Failed to parse student ID</h1>");
-                out.println("<h2>Error: " + e.getMessage() + "</h2>");
-
+                out.println("<h2 class='error-header'>Failed to parse student ID</h2>");
+                out.println("<p class='error-header'>Error: " + e.getMessage() + "</p>");
                 // Back to allStudents
                 out.println("<div style='text-align:center;'>");
                 out.println("<button class='btn btn-secondary' onclick=\"window.location.href='/allStudents';\">Back</button>"); // Back button
@@ -77,9 +75,8 @@ public class AllStudentsServlet extends HttpServlet {
         } catch (SQLException e) {
             PrintWriter out = response.getWriter();
             out.println("<html><head><title>Error</title><link rel='stylesheet' type='text/css' href='/css/styles.css'></head><body>");
-            out.println("<h1>Failed to retrieve student courses data</h1>");
-            out.println("<h2>Error: " + e.getMessage() + "</h2>");
-
+            out.println("<h2 class='error-header'>Failed to retrieve student courses data</h2>");
+            out.println("<p class='error-header'>Error: " + e.getMessage() + "</p>");
             // Back to allStudents
             out.println("<div style='text-align:center;'>");
             out.println("<button class='btn btn-secondary' onclick=\"window.location.href='/allStudents';\">Back</button>"); // Back button
@@ -155,7 +152,6 @@ public class AllStudentsServlet extends HttpServlet {
         statement.close();
     }
 
-
     // Display courses for a specific student
     private void displayStudentCourses(Connection connection, String firstName, String lastName,int studentID, HttpServletResponse response) throws SQLException, IOException {
         // Execute SQL query to get courses for the specific student
@@ -189,8 +185,8 @@ public class AllStudentsServlet extends HttpServlet {
         // Check if any results are returned
         if (!resultSet.isBeforeFirst()) {
             // No results found for the given student name
-            out.println("<h2>Failed to find student or courses</h2>");
-            out.println("<p>No student with the name " + firstName + " " + lastName + " found, or no courses are associated with this student.</p>");
+            out.println("<h2 class='error-header'>Failed to find student or courses</h2>");
+            out.println("<p class='error-header'>No student with the name " + firstName + " " + lastName + " found, or no courses are associated with this student.</p>");
             // Back to all students
             out.println("<div style='text-align:center;'>");
             out.println("<button class='btn btn-secondary' onclick=\"window.location.href='/allStudents';\">Back</button>"); // Back button
@@ -210,7 +206,6 @@ public class AllStudentsServlet extends HttpServlet {
             }
 
             out.println("</table>");
-
             // Back to all students button
             out.println("<div style='text-align:center;'>");
             out.println("<form method='get' action='/allStudents'>");

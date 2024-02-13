@@ -175,8 +175,8 @@ public class AssociateStudentCourseServlet extends HttpServlet {
         } catch (SQLException e) {
             PrintWriter out = response.getWriter();
             out.println("<html><head><title>Error</title><link rel='stylesheet' type='text/css' href='/css/styles.css'></head><body>");
-            out.println("<h1>Failed to retrieve data</h1>");
-            out.println("<h2>Error: " + e.getMessage() + "</h2>");
+            out.println("<h2 class='error-header'>Failed to retrieve data</h2>");
+            out.println("<p class='error-header'>Error: " + e.getMessage() + "</p>");
             // Back to associateStudentCourse
             out.println("<div style='text-align:center;'>");
             out.println("<button class='btn btn-secondary' onclick=\"window.location.href='/associateStudentCourse';\">Back</button>"); // Back button
@@ -205,8 +205,8 @@ public class AssociateStudentCourseServlet extends HttpServlet {
                 response.setContentType("text/html");
                 PrintWriter out = response.getWriter();
                 out.println("<html><head><title>Error</title><link rel='stylesheet' type='text/css' href='/css/styles.css'></head><body>");
-                out.println("<h1>Association Failed</h1>");
-                out.println("<h2>Student is already associated with this course.</h2>");
+                out.println("<h2 class='error-header'>Association Failed</h2>");
+                out.println("<p class='error-header'>Student is already associated with this course.</p>");
                 // Back to associateStudentCourse
                 out.println("<div style='text-align:center;'>");
                 out.println("<button class='btn btn-secondary' onclick=\"window.location.href='/associateStudentCourse';\">Back</button>"); // Back button
@@ -230,7 +230,7 @@ public class AssociateStudentCourseServlet extends HttpServlet {
                     response.setContentType("text/html");
                     PrintWriter out = response.getWriter();
                     out.println("<html><head><title>Error</title><link rel='stylesheet' type='text/css' href='/css/styles.css'></head><body>");
-                    out.println("<h1>Failed to associate student with course. No rows affected.</h1>");
+                    out.println("<h2 class='error-header'>Failed to associate student with course. No rows affected.</h2>");
                     // Back to associateStudentCourse
                     out.println("<div style='text-align:center;'>");
                     out.println("<button class='btn btn-secondary' onclick=\"window.location.href='/associateStudentCourse';\">Back</button>"); // Back button
@@ -243,8 +243,8 @@ public class AssociateStudentCourseServlet extends HttpServlet {
         } catch (NumberFormatException e) {
             PrintWriter out = response.getWriter();
             out.println("<html><head><title>Error</title><link rel='stylesheet' type='text/css' href='/css/styles.css'></head><body>");
-            out.println("<h1>Invalid student or course ID</h1>");
-            out.println("<h2>Error: " + e.getMessage() + "</h2>");
+            out.println("<h2 class='error-header'>Invalid student or course ID</h2>");
+            out.println("<p class='error-header'>Error: " + e.getMessage() + "</p>");
             // Back to associateStudentCourse
             out.println("<div style='text-align:center;'>");
             out.println("<button class='btn btn-secondary' onclick=\"window.location.href='/associateStudentCourse';\">Back</button>"); // Back button
@@ -254,8 +254,8 @@ public class AssociateStudentCourseServlet extends HttpServlet {
         } catch (SQLException e) {
             PrintWriter out = response.getWriter();
             out.println("<html><head><title>Error</title><link rel='stylesheet' type='text/css' href='/css/styles.css'></head><body>");
-            out.println("<h1>Failed to associate student with course</h1>");
-            out.println("<h2>Error: " + e.getMessage() + "</h2>");
+            out.println("<h2 class='error-header'>Failed to associate student with course</h2>");
+            out.println("<p class='error-header'>Error: " + e.getMessage() + "</p>");
             // Back to associateStudentCourse
             out.println("<div style='text-align:center;'>");
             out.println("<button class='btn btn-secondary' onclick=\"window.location.href='/associateStudentCourse';\">Back</button>"); // Back button

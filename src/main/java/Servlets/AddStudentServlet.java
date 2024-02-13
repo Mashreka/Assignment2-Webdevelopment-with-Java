@@ -72,7 +72,7 @@ public class AddStudentServlet extends HttpServlet {
                 response.setContentType("text/html");
                 PrintWriter out = response.getWriter();
                 out.println("<html><head><title>Error</title><link rel='stylesheet' type='text/css' href='/css/styles.css'></head><body>");
-                out.println("<h2>Failed to add student. Please enter all required fields.</h2>");
+                out.println("<h2 class='error-header'>Failed to add student. Please enter all required fields.</h2>");
                 // Back to add student
                 out.println("<div style='text-align:center;'>");
                 out.println("<button class='btn btn-secondary' onclick=\"window.location.href='/addStudent';\">Back</button>"); // Back button
@@ -100,7 +100,7 @@ public class AddStudentServlet extends HttpServlet {
             response.setContentType("text/html");
             PrintWriter out = response.getWriter();
             out.println("<html><head><title>Error</title><link rel='stylesheet' type='text/css' href='/css/styles.css'></head><body>");
-            out.println("<h2>Failed to add student. Please try again later.</h2>");
+            out.println("<h2 class='error-header'>Failed to add student. Please try again later.</h2>");
             // Back to add student
             out.println("<div style='text-align:center;'>");
             out.println("<button class='btn btn-secondary' onclick=\"window.location.href='/addStudent';\">Back</button>"); // Back button

@@ -35,6 +35,18 @@ h2 {
     text-align: center;
 }
 
+
+
+p.error-header {
+    color: red;
+    margin-bottom: 20px; /* Add margin below the h1 element */
+}
+
+h2.error-header {
+    color: red;
+    margin-bottom: 20px; /* Add margin below the h2 element */
+}
+
 table {
     margin: 20px auto;
     border-collapse: collapse;

@@ -67,7 +67,7 @@ public class AddCourseServlet extends HttpServlet {
                 response.setContentType("text/html");
                 PrintWriter out = response.getWriter();
                 out.println("<html><head><title>Error</title><link rel='stylesheet' type='text/css' href='/css/styles.css'></head><body>");
-                out.println("<h2>Failed to add course. Please enter all required fields.</h2>");
+                out.println("<h2 class='error-header'>Failed to add course. Please enter all required fields.</h2>");
                 // Back to add course
                 out.println("<div style='text-align:center;'>");
                 out.println("<button class='btn btn-secondary' onclick=\"window.location.href='/addCourse';\">Back</button>"); // Back button
@@ -97,7 +97,7 @@ public class AddCourseServlet extends HttpServlet {
             response.setContentType("text/html");
             PrintWriter out = response.getWriter();
             out.println("<html><head><title>Error</title><link rel='stylesheet' type='text/css' href='/css/styles.css'></head><body>");
-            out.println("<h2>Failed to add course. Please try again later.</h2>");
+            out.println("<h2 class='error-header'>Failed to add course. Please try again later.</h2>");
             // Back to add course
             out.println("<div style='text-align:center;'>");
             out.println("<button class='btn btn-secondary' onclick=\"window.location.href='/addCourse';\">Back</button>"); // Back button
@@ -111,7 +111,7 @@ public class AddCourseServlet extends HttpServlet {
             response.setContentType("text/html");
             PrintWriter out = response.getWriter();
             out.println("<html><head><title>Error</title><link rel='stylesheet' type='text/css' href='/css/styles.css'></head><body>");
-            out.println("<h2>Failed to add course. YHP must be a valid integer.</h2>");
+            out.println("<h2 class='error-header'>Failed to add course. YHP must be a valid integer.</h2>");
             // Back to add course
             out.println("<div style='text-align:center;'>");
             out.println("<button class='btn btn-secondary' onclick=\"window.location.href='/addCourse';\">Back</button>"); // Back button
