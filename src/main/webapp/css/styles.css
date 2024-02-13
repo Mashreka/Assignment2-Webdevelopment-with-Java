@@ -51,6 +51,7 @@ table {
     margin: 20px auto;
     border-collapse: collapse;
     width: 80%;
+
 }
 
 table, th, td {
@@ -149,3 +150,5 @@ table tr:hover {
 .btn-secondary {
      background-color: #ccc;
 }
+
+

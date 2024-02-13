@@ -43,12 +43,14 @@ public class AssociateStudentCourseServlet extends HttpServlet {
             out.println("<div class='navbar'>");
             out.println("<a href='index.html'>Home</a>");
             out.println("<a href='/allStudents'>All Students</a>");
-            out.println("<a href='/allCourses'>All Courses</a>");
-            out.println("<a href='/studentCourses'>All Students with Courses</a>");
-            out.println("<a href='/statistics'>Statistics</a>");
+            //out.println("<a href='/allCourses'>All Courses</a>");
+            //out.println("<a href='/studentCourses'>All Students with Courses</a>");
+
             out.println("<a href='/addStudent'>Add Student</a>");
             out.println("<a href='/addCourse'>Add Course</a>");
-            out.println("<a href='/associateStudentCourse' class='active'>Associate Student With Course </a></div>");
+            out.println("<a href='/associateStudentCourse' class='active'>Associate Student With Course </a>");
+            out.println("<a href='/statistics'>Statistics</a>");
+            out.println("</div>");
 
             // Display all students in a table
             out.println("<h2>All Students</h2><table>");
@@ -156,7 +158,7 @@ public class AssociateStudentCourseServlet extends HttpServlet {
                     String lastName = resultSet.getString("Lname");
                     String courseName = resultSet.getString("namn");
 
-                    // Concatenate first name and last name into a single "Name" column
+                    // Concatenate first name and last name
                     String fullName = firstName + " " + lastName;
 
                     // Print data in the table
@@ -224,7 +226,7 @@ public class AssociateStudentCourseServlet extends HttpServlet {
 
                 // Check if the association was successfully inserted
                 if (rowsAffected > 0) {
-                    response.sendRedirect("/studentCourses");
+                    response.sendRedirect("/associateStudentCourse");
                 } else {
                     // Send an error message if no rows were affected
                     response.setContentType("text/html");

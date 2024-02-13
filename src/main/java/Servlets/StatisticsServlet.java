@@ -34,12 +34,14 @@ public class StatisticsServlet extends HttpServlet {
             out.println("<div class='navbar'>");
             out.println("<a href='index.html'>Home</a>");
             out.println("<a href='/allStudents'>All Students</a>");
-            out.println("<a href='/allCourses'>All Courses</a>");
-            out.println("<a href='/studentCourses'>All Students with Courses</a>");
-            out.println("<a href='/statistics' class='active'>Statistics</a>");
+            //out.println("<a href='/allCourses'>All Courses</a>");
+            //out.println("<a href='/studentCourses'>All Students with Courses</a>");
+
             out.println("<a href='/addStudent'>Add Student</a>");
             out.println("<a href='/addCourse'>Add Course</a>");
-            out.println("<a href='/associateStudentCourse'>Associate Student With Course </a></div>");
+            out.println("<a href='/associateStudentCourse'>Associate Student With Course </a>");
+            out.println("<a href='/statistics' class='active'>Statistics</a>");
+            out.println("</div>");
             // Calculate statistics using SQL queries
             int totalStudents = getCount(connection, "students");
             int totalCourses = getCount(connection, "courses");

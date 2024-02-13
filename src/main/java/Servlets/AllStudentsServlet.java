@@ -102,12 +102,13 @@ public class AllStudentsServlet extends HttpServlet {
         out.println("<div class='navbar'>");
         out.println("<a href='index.html'>Home</a>");
         out.println("<a href='/allStudents' class='active'>All Students</a>");
-        out.println("<a href='/allCourses'>All Courses</a>");
-        out.println("<a href='/studentCourses'>All Students with Courses</a>");
-        out.println("<a href='/statistics'>Statistics</a>");
+        //out.println("<a href='/allCourses'>All Courses</a>");
+        //out.println("<a href='/studentCourses'>All Students with Courses</a>");
         out.println("<a href='/addStudent'>Add Student</a>");
         out.println("<a href='/addCourse'>Add Course</a>");
-        out.println("<a href='/associateStudentCourse'>Associate Student With Course </a></div>");
+        out.println("<a href='/associateStudentCourse'>Associate Student With Course </a>");
+        out.println("<a href='/statistics'>Statistics</a>");
+        out.println("</div>");
 
         out.println("<h2>All Students</h2><table>");
         out.println("<tr><th>ID</th><th>First Name</th><th>Last Name</th><th>City</th><th>Interests</th></tr>");

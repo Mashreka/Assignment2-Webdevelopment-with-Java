@@ -9,9 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 
 //servlet mapped to the /addStudent
 @WebServlet("/addStudent")
@@ -19,21 +17,30 @@ public class AddStudentServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        // Connect to the database using JDBC
+        try {
+            Connection connection = DatabaseConnector.connectForRead();
+
+            // Display all students
+            displayAllStudents(connection, response);
+
+            // Close connection
+            connection.close();
+        } catch (SQLException e) {
+            PrintWriter out = response.getWriter();
+            out.println("<html><head><title>Error</title><link rel='stylesheet' type='text/css' href='/css/styles.css'></head><body>");
+            out.println("<p class='error-header'>Error: " + e.getMessage() + "</p>");
+            // Back to allStudents
+            out.println("<div style='text-align:center;'>");
+            out.println("<button class='btn btn-secondary' onclick=\"window.location.href='/allStudents';\">Back</button>"); // Back button
+            out.println("</div>");
+            out.println("</body></html>");
+        }
+
         // Display form to add a new student
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
         out.println("<html><head><title>Grit Academy</title><link rel='stylesheet' type='text/css' href='/css/styles.css'></head><body>");
-
-        out.println("<div class='navbar'>");
-        out.println("<a href='index.html'>Home</a>");
-        out.println("<a href='/allStudents'>All Students</a>");
-        out.println("<a href='/allCourses'>All Courses</a>");
-        out.println("<a href='/studentCourses'>All Students with Courses</a>");
-        out.println("<a href='/statistics'>Statistics</a>");
-        out.println("<a href='/addStudent' class='active'>Add Student</a>");
-        out.println("<a href='/addCourse'>Add Course</a>");
-        out.println("<a href='/associateStudentCourse'>Associate Student With Course </a></div>");
-
         // Add New Student form
         out.println("<h2 class='form-heading'>Add New Student</h2>");
 
@@ -90,13 +97,9 @@ public class AddStudentServlet extends HttpServlet {
                 preparedStatement.setString(4, hobby);
                 preparedStatement.executeUpdate();
             }
-
-            response.sendRedirect("/allStudents");
-
             connection.close();
         } catch (SQLException e) {
             // Handle SQL exceptions
-            e.printStackTrace();
             response.setContentType("text/html");
             PrintWriter out = response.getWriter();
             out.println("<html><head><title>Error</title><link rel='stylesheet' type='text/css' href='/css/styles.css'></head><body>");
@@ -108,6 +111,46 @@ public class AddStudentServlet extends HttpServlet {
             out.println("</body></html>");
 
         }
+    }
+    // Display all students
+    private void displayAllStudents(Connection connection, HttpServletResponse response) throws SQLException, IOException {
+        // Execute SQL query to get all students
+        String query = "SELECT * FROM students";
+        Statement statement = connection.createStatement();
+        ResultSet resultSet = statement.executeQuery(query);
+
+        // Generate HTML response dynamically
+        response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
+
+        out.println("<html><head><title>Grit Academy</title><link rel='stylesheet' type='text/css' href='/css/styles.css'></head><body>");
+
+        out.println("<div class='navbar'>");
+        out.println("<a href='index.html'>Home</a>");
+        out.println("<a href='/allStudents'>All Students</a>");
+        //out.println("<a href='/allCourses'>All Courses</a>");
+        //out.println("<a href='/studentCourses'>All Students with Courses</a>");
+
+        out.println("<a href='/addStudent' class='active'>Add Student</a>");
+        out.println("<a href='/addCourse'>Add Course</a>");
+        out.println("<a href='/associateStudentCourse'>Associate Student With Course </a>");
+        out.println("<a href='/statistics'>Statistics</a>");
+        out.println("</div>");
+
+        out.println("<h2>All Students</h2><table>");
+        out.println("<tr><th>ID</th><th>First Name</th><th>Last Name</th><th>City</th><th>Interests</th></tr>");
+
+        // Loop through the result set and print data in the table
+        while (resultSet.next()) {
+            out.println("<tr><td>" + resultSet.getInt("id") + "</td><td>" + resultSet.getString("Fname") + "</td><td>"
+                    + resultSet.getString("Lname") + "</td><td>" + resultSet.getString("ort") + "</td><td>"
+                    + resultSet.getString("intressen") + "</td></tr>");
+        }
+
+        out.println("</table>");
+        // Close resources
+        resultSet.close();
+        statement.close();
     }
 
 
