@@ -32,6 +32,7 @@ public class StatisticsServlet extends HttpServlet {
             out.println("</head><body>");
 
             out.println("<div class='navbar'>");
+            out.println("<a href='index.html'>Home</a>");
             out.println("<a href='/allStudents'>All Students</a>");
             out.println("<a href='/allCourses'>All Courses</a>");
             out.println("<a href='/studentCourses'>All Students with Courses</a>");

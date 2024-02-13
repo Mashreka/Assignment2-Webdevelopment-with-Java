@@ -103,6 +103,7 @@ public class AllStudentsServlet extends HttpServlet {
         out.println("<html><head><title>Grit Academy</title><link rel='stylesheet' type='text/css' href='/css/styles.css'></head><body>");
 
         out.println("<div class='navbar'>");
+        out.println("<a href='index.html'>Home</a>");
         out.println("<a href='/allStudents' class='active'>All Students</a>");
         out.println("<a href='/allCourses'>All Courses</a>");
         out.println("<a href='/studentCourses'>All Students with Courses</a>");
@@ -176,6 +177,7 @@ public class AllStudentsServlet extends HttpServlet {
         out.println("<html><head><title>Grit Academy</title><link rel='stylesheet' type='text/css' href='/css/styles.css'></head><body>");
 
         out.println("<div class='navbar'>");
+        out.println("<a href='index.html'>Home</a>");
         out.println("<a href='/studentCourses'>All Students with Courses</a>");
         out.println("<a href='/allStudents' class='active'>All Students</a>");
         out.println("<a href='/allCourses' >All Courses</a>");
